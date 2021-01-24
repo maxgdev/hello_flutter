@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,14 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,30 +41,31 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Center(
-              child: DecoratedBox(
-                decoration: BoxDecoration(color: Colors.lightBlueAccent),
-                child: Padding(
-                  padding: const EdgeInsets.all(38.0),
-                  child: Text('Hello World Goes HERE!'),
-                ),
-              ),
-            ),
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+             MyBox('Clinton'),
+             SizedBox(height:8.0),
+             MyBox('Obama'),
+             SizedBox(height:8.0),
+             MyBox('Trump'),
+             SizedBox(height:8.0),
+             MyBox('Biden')
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class MyBox extends StatelessWidget {
+  final String name;
+  const MyBox(this.name);
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(color: Colors.lightBlueAccent),
+      child: Padding(
+        padding: const EdgeInsets.all(40),
+        child: Text(name),
+      ),
     );
   }
 }
