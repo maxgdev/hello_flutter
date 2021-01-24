@@ -30,7 +30,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,13 +40,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             MyBox('Clinton'),
-             SizedBox(height:8.0),
-             MyBox('Obama'),
-             SizedBox(height:8.0),
-             MyBox('Trump'),
-             SizedBox(height:8.0),
-             MyBox('Biden')
+            MyBox('Clinton', Colors.blueAccent),
+            SizedBox(height: 8.0),
+            MyBox('Obama', Colors.redAccent),
+            SizedBox(height: 8.0),
+            MyBox('Trump', Colors.yellowAccent),
+            SizedBox(height: 8.0),
+            MyBox('Biden', Colors.greenAccent)
           ],
         ),
       ),
@@ -57,11 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class MyBox extends StatelessWidget {
   final String name;
-  const MyBox(this.name);
+  final boxColor;
+  const MyBox(this.name, this.boxColor);
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(color: Colors.lightBlueAccent),
+      decoration: BoxDecoration(color: boxColor),
       child: Padding(
         padding: const EdgeInsets.all(40),
         child: Text(name),
